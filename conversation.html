@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>App Improvement Suggestions</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+    }
+
+    body {
+      margin: 0;
+      padding: 2rem;
+      background: linear-gradient(180deg, #f6f8fb 0%, #ffffff 35%, #f3f5f8 100%);
+      color: #1f2933;
+    }
+
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 18px;
+      box-shadow: 0 22px 45px -30px rgba(15, 23, 42, 0.5);
+      padding: 2.5rem;
+      backdrop-filter: blur(6px);
+    }
+
+    h1 {
+      margin-top: 0;
+      font-size: 2.5rem;
+      letter-spacing: 0.02em;
+    }
+
+    h2 {
+      font-size: 1.75rem;
+      margin-top: 2.5rem;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      margin-top: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #546a7b;
+    }
+
+    section + section {
+      border-top: 1px solid rgba(100, 116, 139, 0.25);
+      padding-top: 2rem;
+      margin-top: 2rem;
+    }
+
+    ul {
+      padding-left: 1.2rem;
+    }
+
+    li {
+      margin-bottom: 0.75rem;
+    }
+
+    .task-stub {
+      border-left: 4px solid #4f46e5;
+      background: rgba(79, 70, 229, 0.08);
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin-top: 1.25rem;
+    }
+
+    .task-stub h4 {
+      margin: 0 0 1rem;
+      font-size: 1.1rem;
+      color: #3730a3;
+    }
+
+    .task-stub ol {
+      padding-left: 1.2rem;
+      margin: 0;
+    }
+
+    .task-stub li {
+      margin-bottom: 0.75rem;
+    }
+
+    footer {
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: #64748b;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>App Improvement Suggestions</h1>
+      <p><strong>User request:</strong> Suggest improvements to the app.</p>
+    </header>
+
+    <section>
+      <h2>Findings</h2>
+
+      <article>
+        <h3>1. YouTube search results never reach the UI</h3>
+        <p>
+          <code>getYtubeVids</code> assigns <code>response.data.items</code> to <code>this.ytTitle</code> inside the
+          <code>.then</code> handler and returns <code>ytTitle</code>, but inside that handler <code>this</code> is not the
+          service instance and <code>ytTitle</code> is undeclared. The promise therefore resolves to
+          <code>undefined</code>, so <code>characterCtrl</code> receives no data and immediately dereferences
+          <code>response[0]</code>, causing runtime errors and empty video panels.
+        </p>
+
+        <div class="task-stub">
+          <h4>Task &mdash; Ensure YouTube promises resolve with video data</h4>
+          <ol>
+            <li>In <code>js/mainService.js</code>, rewrite <code>getYtubeVids</code> so it stores
+              <code>response.data.items</code> in a local constant (no reliance on <code>this</code>) and returns that
+              array from the <code>.then</code> callback.</li>
+            <li>URL-encode the <code>srcTerm</code> when constructing the request to guard against spaces and special
+              characters.</li>
+            <li>Verify <code>characterCtrl</code> now receives an array and gracefully handle cases where the array has
+              fewer than three items before updating the scope.</li>
+          </ol>
+        </div>
+      </article>
+
+      <article>
+        <h3>2. Enemy attacks can heal the player</h3>
+        <p>
+          The enemy damage calculation simply subtracts the trainer&rsquo;s defense from the Pokémon&rsquo;s attack. Many Pokémon
+          have a base attack below the trainer&rsquo;s fixed defense of 30, yielding negative damage; subtracting a negative
+          number adds health, so the trainer can get healed when attacked.
+        </p>
+
+        <div class="task-stub">
+          <h4>Task &mdash; Clamp enemy attack damage to non-negative values</h4>
+          <ol>
+            <li>In <code>directives/enemyDirective.js</code>, update the <code>attack</code> method to return
+              <code>Math.max(0, this.att - scope.trainer.def)</code> (or another minimum floor) so damage never becomes
+              negative.</li>
+            <li>Consider incorporating a minimum chip damage to keep battles engaging, and update any UI or logging that
+              reports enemy damage accordingly.</li>
+            <li>Manually exercise encounters with low-attack Pok&eacute;mon to confirm the trainer&rsquo;s health no longer
+              increases after enemy turns.</li>
+          </ol>
+        </div>
+      </article>
+    </section>
+
+    <section>
+      <h2>Testing</h2>
+      <p>&#9888;&#65039; Not run (read-only code review).</p>
+    </section>
+
+    <footer>
+      <p>This document is a standalone, offline-friendly summary of the original agent response.</p>
+    </footer>
+  </main>
+</body>
+</html>
