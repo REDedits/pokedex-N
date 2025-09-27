@@ -1,0 +1,17 @@
+<div class="row">
+	<div class="col-md-12 catchBg">
+		<div class="chooser1" ng-click="choice()"></div>
+		<div class="chooser2" ng-click="choice()"></div>
+		<div class="chooser3" ng-click="choice()"></div>
+		<!-- <div class="chooser4" ng-click="choice()" ng-hide="secretPikachu"></div>
+		<div class="chooser5" ng-click="choice()" ng-hide="secretMewtwo"></div> -->
+		<div class="trainer-form-container">
+			<form ng-hide="hideForm">
+				<input type="text" placeholder="Please type your name" ng-model="words.trainer">
+				<button type="button" class="btn btn-info" ng-click="update(words.trainer)" value="save">ENTER</button>
+			</form>
+		</div>
+		<div class="chosen-pokemon" bg-img-directive="{{bgImage}}"  ng-hide="hidePokemon" ng-click="updateDetails()"></div>
+		<div class="battleBtn"><button type="button" class="btn btn-info" ng-hide="hideBattleBtn" ng-click="battle(pokemonBuddy)">BATTLE</button></div>
+	</div>
+</div>

@@ -1,21 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css" />
-  <link rel="stylesheet" href="mainStyle.css" />
-  <title>Pokedex-N</title>
+        <link
+                rel="stylesheet"
+                href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        >
+	<link rel="stylesheet" href="mainStyle.css">
+	<title>Pokedex-N</title>
 </head>
-<body>
-  <div id="root"></div>
+<body ng-app="pokedexN">
 
-  <script src="node_modules/react/umd/react.development.js"></script>
-  <script src="node_modules/react-dom/umd/react-dom.development.js"></script>
-  <script src="node_modules/react-router-dom/dist/umd/react-router-dom.development.js"></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <script src="https://code.responsivevoice.org/responsivevoice.js"></script>
-  <script type="text/babel" src="app.jsx"></script>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="top-dex">
+				<div class="row">
+					<div class="col-md-4">
+						<a class="pokedex-top nav-ui-top-left hidden-xs hidden-sm" ui-sref="home" ui-sref-active="active">Home</a>
+			  		</div>
+			  		<div class="col-md-4">
+			  			<a class="pokedex-top nav-ui-top-middle hidden-xs hidden-sm" ui-sref="catch" ui-sref-active="active">Scan for Pokemon</a>
+			  		</div>
+			  		<div class="col-md-4">
+			  			<a class="pokedex-top nav-ui-top-right hidden-xs hidden-sm" ui-sref="character" ui-sref-active="active">Pokedex</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="main-content-container">
+
+
+				
+					<div ui-view id="view">	
+					</div>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="bottom-dex">
+				
+			</div>
+		</div>
+	</div>
+</div>
+  
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.9/angular.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.9/angular-animate.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="pokeApp.js"></script>
+<script src="js/mainCtrl.js"></script>
+<script src="js/homeCtrl.js"></script>
+<script src="js/catchCtrl.js"></script>
+<script src="js/characterCtrl.js"></script>
+<script src="js/chooseCtrl.js"></script>
+<script src="js/mainService.js"></script>
+<script src="https://code.responsivevoice.org/responsivevoice.js"></script>
+<script src="directives/battleDirective.js"></script>
+<script src="directives/bgImgDirective.js"></script>
+<script src="directives/createDirective.js"></script>
+<script src="directives/enemyDirective.js"></script>
 </body>
 </html>

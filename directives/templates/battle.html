@@ -1,0 +1,31 @@
+<div class="healthBar">
+	<div class="stat-container container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<p class="text-center text-capitalize">{{name}}</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="progress">
+					<div id="pgBar" class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="{{health}}" aria-valuemin="0" aria-valuemax="100%" style="width: {{health}}">
+						<span class="sr-only">{{health}} Complete (success)</span>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<div>
+			<div class="row">
+				<div class="col-xs-4">TYP: <span class="stat-value" ng-repeat="type in types">{{type | limitTo: 1 }}</span></div>
+				<div class="col-xs-4 text-center">ATK: <span class="stat-value">{{atk}}</span></div>
+				<div class="col-xs-4 text-right">DEF: <span class="stat-value">{{def}}</span></div>
+			</div>
+			<div class="row">
+				<div class="col-xs-4">SPD: <span class="stat-value">{{speed}}</span></div>
+				<div class="col-xs-4 text-center">SAK: <span class="stat-value">{{spAttack}}</span></div>
+				<div class="col-xs-4 text-right">SDF: <span class="stat-value">{{spDefense}}</span></div>
+			</div>
+		</div>
+	</div>
+</div>

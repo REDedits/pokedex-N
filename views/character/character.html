@@ -1,0 +1,75 @@
+
+<div class="row">
+	<div class="col-md-6">
+		<div class="image-container" bg-img-directive="{{bgImage}}">
+			<!-- background image url needs to be changed by controller / custom directive?-->
+		</div>
+		<div class="panel panel-info details-container">
+			<div class="panel-heading text-center">
+				<h1>{{pTitle}}</h1>
+			</div>
+			<div class="panel-body" ng-click="voice()">
+
+				<p>This Pokemon is a {{pokemon.type[0].type.name}} type, and has the following Special Abilities.</p>
+				<ul>
+					<li ng-repeat="ability in abilities">{{ability.ability.name}}</li>
+				</ul>
+				<p>{{pokemon.name}} has been observed in action and is estimated to have these stat values..</p>
+				<ul>
+					<li ng-repeat="stat in stats">{{stat.stat.name}} : {{stat.base_stat}}</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<!-- <div class="menu-container">
+			<div class="row">
+				<div class="col-md-3 hidden-xs hidden-sm">
+					<img ng-src="{{pmodel}}" class="img-responsive img-circle">
+				</div>
+				<div class="col-md-3 hidden-xs hidden-sm">
+					<img src="/images/charmenu-placeholder.png" class="img-responsive img-circle">
+				</div>
+				<div class="col-md-3 hidden-xs hidden-sm">
+					<img src="/images/charmenu-placeholder.png" class="img-responsive img-circle">
+				</div>
+				<div class="col-md-3 hidden-xs hidden-sm">
+					<img src="/images/charmenu-placeholder.png" class="img-responsive img-circle">
+				</div>
+			</div>
+		</div> -->
+		<div class="yt-container panel panel-info">
+			<div class="panel-heading text-center">
+				<h3>Recorded Files</h3>
+			</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="thumbnail youtubeImages" ng-style="{'background-image': 'url(' + ytThumb1 + ')'}">
+				
+							
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="thumbnail youtubeImages" ng-style="{'background-image': 'url(' + ytThumb2 + ')'}">
+					
+							
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="thumbnail youtubeImages" ng-style="{'background-image': 'url(' + ytThumb3 + ')'}">
+			
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+	</div>
+</div>
+
