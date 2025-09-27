@@ -13,3 +13,13 @@ Pokédex-N is a server-less, mobile-ready, AngularJS powered interactive recreat
 ![Alt text](images/screenshots/pokedex_screenshot_2.png "Screen Shot 2")
 ![Alt text](images/screenshots/pokedex_screenshot_3.png "Screen Shot 3")
 ![Alt text](images/screenshots/pokedex_screenshot_4.png "Screen Shot 4")
+
+## Running locally
+
+All of the front-end libraries are loaded from CDNs so you can simply open `index.html` in a browser. If you prefer to use the
+Node server, install dependencies and start it:
+
+```
+npm install
+npm start
+```
