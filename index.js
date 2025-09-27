@@ -1,17 +1,16 @@
-var express = require('express');
-var app = express();
+const express = require('express');
+const path = require('path');
 
-app.set('port', (process.env.PORT || 5000));
+const app = express();
+
+app.set('port', process.env.PORT || 5000);
 
 app.use(express.static(__dirname));
 
-app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
-
-app.get('/', function(request, response) {
-    response.render('pages/index');
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-app.listen(app.get('port'), function() {
-    console.log('Running on port', app.get('port'));
+app.listen(app.get('port'), () => {
+  console.log('Running on port', app.get('port'));
 });

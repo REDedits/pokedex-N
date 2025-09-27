@@ -1,27 +1,28 @@
 {
   "name": "pokedex-n",
   "version": "1.0.0",
-  "description": "Pokedex-N is a server-less, mobile-ready, AngularJS powered interactive recreation of the fictional Pokedex device found in the Pokemon series.",
+  "description": "Pokedex-N is a server-less, mobile-ready, React powered interactive recreation of the fictional Pokedex device found in the Pokemon series.",
   "main": "index.js",
   "engines": {
-    "node": "8.0.0"
+    "node": "18.x"
   },
   "dependencies": {
-    "angular-animate": "^1.5.9",
-    "angular-ui-router": "^0.3.2",
-    "bootstrap": "^3.3.7",
-    "jquery": "^3.1.1",
-    "body-parser": "^1.4.3",
-    "express": "^4.13.4",
-    "method-override": "^2.1.3",
-    "mongoose": "^4.4.12",
-    "morgan": "^1.1.1"
+    "bootstrap": "^3.4.1",
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2",
+    "method-override": "^3.0.0",
+    "mongoose": "^8.3.2",
+    "morgan": "^1.10.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.23.1"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-gh-pages": "^0.5.4"
   },
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
